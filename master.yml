@@ -1,0 +1,70 @@
+---
+
+#- hosts: gateway
+- name: configure dev machine...
+  hosts: all
+  vars:
+    ansible_python_interpreter: /usr/bin/python2.7
+  become: yes
+
+
+  tasks:
+
+  - name: update the machine...
+    dnf:
+      name: '*'
+      state: latest
+
+#  - name: update the machine...
+#    yum: name='kernel' state=latest
+
+  - name: install unzip
+    dnf:
+      name='unzip'
+      state=latest
+
+
+  - name: install tar
+    dnf: name='tar' state=latest
+
+  #- name: install EPEL.
+  #  yum: name='epel-release' state=present
+
+  #- name: install java
+  #  yum: name='java-1.8.0-openjdk-headless-1.8.0.262.b10-1.el7.x86_64' state=present
+  #  yum: name='java-1.8.0-openjdk-devel-1.8.0.262.b10-1.el7 ' state=present
+
+  - name: install java
+    dnf: name='java' state=present
+
+  - name: install maven
+    dnf: name='maven' state=present
+
+  - name: install git
+    dnf: name='git' state=present
+
+  - name: install podman
+    dnf: name='podman' state=present
+
+  - name: install buildah
+    dnf: name='buildah' state=present
+
+  - name: get the oc client.
+    unarchive:
+      src: http://d3s3zqyaz8cp2d.cloudfront.net/pub/openshift-v4/clients/ocp/4.6.4/openshift-client-linux-4.6.4.tar.gz
+      dest: /usr/local/bin
+      remote_src: yes
+
+  - name: installing selinux python bindings.
+    dnf: name='libselinux-python' state=present
+
+
+  - name: Create the .m2 directoryls
+    file:
+      path: /home/.m2
+      state: directory
+
+  - name: Drop in the settings file.
+    copy:
+      src: ./settings.xml
+      dest: /home/.m2/settings.xml
