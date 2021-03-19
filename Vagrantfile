@@ -11,6 +11,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   	v.cpus = 2
 end
   config.vm.network :forwarded_port, guest: 80, host: 9980
+#  config.vm.network :forwarded_port, guest: 8000, host: 8000, protocol: "tcp"
   config.vm.network :private_network, ip: "192.168.33.10"
   config.vbguest.auto_update = true
   config.vm.synced_folder ".", "/vagrant", type: "nfs"

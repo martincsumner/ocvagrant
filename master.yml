@@ -61,10 +61,10 @@
 
   - name: Create the .m2 directoryls
     file:
-      path: /home/.m2
+      path: /home/vagrant/.m2
       state: directory
 
   - name: Drop in the settings file.
     copy:
       src: ./settings.xml
-      dest: /home/.m2/settings.xml
+      dest: /home/vagrant/.m2/settings.xml

@@ -1,0 +1,18 @@
+
+SSO Realm... https://keycloak-sso.apps.cluster-4nt48.4nt48.sandbox591.opentlc.com/auth/admin/user1-realm/console
+
+example of 3scale generated client_id : 5b243d37
+example of 3Scale generated secret : 04958302846d6f31fe63bfe2c9d34cb9
+
+
+Connection from 3Scale to RH-SSO
+
+https://<CLIENT_ID> : <SECRET> @ FQDN-FOR-SSO/auth/realms/<YOUR-REALM>
+
+https://testclient:25634d85-4826-4cac-a476-17fd4ee0744b@keycloak-sso.apps.cluster-4nt48.4nt48.sandbox591.opentlc.com/auth/realms/user1-realm
+
+
+
+acquiring a token:
+https://keycloak-sso.apps.cluster-4nt48.4nt48.sandbox591.opentlc.com/auth/realms/user1-realm/protocol/openid-connect/auth
+https://keycloak-sso.apps.cluster-4nt48.4nt48.sandbox591.opentlc.com/auth/realms/user1-realm/protocol/openid-connect/token
